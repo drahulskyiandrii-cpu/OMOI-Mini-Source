@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' qrc: data: blob:; script-src 'self' qrc:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' blob:; media-src 'self' blob: data:; object-src 'none'; frame-src 'none'">
+  <title>OMOI Mini</title>
+  <script src="/qwebchannel.js"></script>
+</head>
+<body>
+  <div id="root" class="compact">
+    <div class="topbar">
+      <div class="dragzone" id="drag">
+        <span class="brand">OMOI <b>mini</b></span>
+        <span id="state" class="status">Bereit</span>
+      </div>
+      <button id="always" title="Immer im Vordergrund" aria-label="Immer im Vordergrund"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="7"/><path d="M12 2v5M12 17v5M2 12h5M17 12h5"/></svg></button>
+      <button id="hide" title="Minimieren" aria-label="Minimieren"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+      <button id="close" title="Schließen" aria-label="Schließen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </div>
+    <main id="workspace">
+      <div id="stage">
+        <canvas id="scene" aria-label="3D-Avatar"></canvas>
+    <div id="empty-avatar" class="empty-avatar" hidden>Avatar wird geladen…</div>
+      </div>
+      <aside id="dock" aria-label="Seitenbereich" hidden>
+      <section id="chat" class="panel dock-panel" hidden>
+        <div class="panel-head dock-heading">Unterhaltung <span class="chat-actions"> <button id="clear-chat" title="Verlauf löschen">Löschen</button> <button id="chat-close">Schließen</button></span></div>
+        <div id="messages" class="messages"></div>
+        <form id="chat-form"><input id="message" placeholder="Schreibe eine Nachricht…" autocomplete="off" maxlength="4000"/><button type="submit">Senden</button></form>
+      </section>
+      <section id="settings" class="panel dock-panel" hidden>
+        <div class="panel-head dock-heading">Einstellungen <button id="settings-close" aria-label="Einstellungen schließen">Schließen</button></div>
+        <nav class="settings-nav" aria-label="Einstellungskategorien">
+          <button type="button" data-settings-tab="general" aria-controls="settings-general" aria-pressed="true">Allgemein</button>
+          <button type="button" data-settings-tab="stt" aria-controls="settings-stt" aria-pressed="false">Mikrofon</button>
+          <button type="button" data-settings-tab="tts" aria-controls="settings-tts" aria-pressed="false">Stimme</button>
+          <button type="button" data-settings-tab="models" aria-controls="settings-models" aria-pressed="false">Modelle</button>
+          <button type="button" data-settings-tab="avatar" aria-controls="settings-avatar" aria-pressed="false">Avatar</button>
+          <button type="button" data-settings-tab="diagnose" aria-controls="settings-diagnose" aria-pressed="false">Diagnose</button>
+          <button type="button" data-settings-tab="advanced" aria-controls="settings-advanced" aria-pressed="false">Erweitert</button>
+        </nav>
+        <div id="settings-content" class="settings-content">
+          <section class="settings-page" id="settings-general" data-settings-page="general">
+            <h2>Allgemein</h2>
+        <label>Oberflächensprache <select id="ui_language"><option value="de">Deutsch</option><option value="ru">Русский</option></select></label>
+        <label>Antwortmodell <select id="llm_mode"><option value="cloud">Luna (Cloud)</option><option value="local_standard">Gemma 4 E2B (lokal, klein)</option><option value="local_12b">Gemma 4 12B (lokal, groß)</option></select></label>
+        <p id="llm-choice-status" class="hint" role="status"></p>
+        <label>Antwortsprache / feste STT-Sprache <select id="language"><option value="de">Deutsch</option><option value="ru">Русский</option></select></label>
+        <label><input id="greeting" type="checkbox" checked/> Begrüßung beim Start</label>
+          </section>
+          <section class="settings-page" id="settings-stt" data-settings-page="stt" hidden>
+            <h2>Mikrofon &amp; Spracherkennung</h2>
+        <label>Mikrofon <select id="microphone-select"><option value="default">Windows-Standardmikrofon</option></select></label>
+        <button id="microphone-refresh">Mikrofone aktualisieren</button>
+        <p id="microphone-status" class="hint" role="status">Geräteliste laden; die Auswahl wird gespeichert.</p>
+        <label>Spracherkennung <select id="stt"><option value="cloud">GPT-Transcribe</option><option value="local">Whisper Medium (OpenVINO CPU)</option><option value="cuda">Faster-Whisper Small (NVIDIA CUDA)</option></select></label>
+            <div id="stt-local-options">
+        <label>STT-Qualität <select id="stt_profile"><option value="fast">Fast (bisheriger Standard)</option><option value="balanced">Balanced (experimentell)</option><option value="quality">Quality (experimentell)</option></select></label>
+        <p class="hint">Balanced/Quality: lokale Begriffskorrektur; CUDA mit optionaler Wortliste und stabilisierter Live-Anzeige. Quality: Beam 5; unsichere Ergebnisse zur Prüfung. Cloud unverändert.</p>
+            <details class="settings-group" >
+              <summary>Erweiterte Erkennung</summary>
+              <div id="stt-cuda-options">
+        <label>STT-Wortliste (CUDA)<input id="stt_hotwords" maxlength="500" placeholder="Begriffe, durch Komma getrennt"/></label>
+        <label><input id="stt_auto_language" type="checkbox"/> Sprache automatisch erkennen (CUDA Balanced/Quality, bevorzugt eingestellte Sprache)</label>
+        <p class="hint">Kurze Aufnahmen bleiben Deutsch oder Russisch wie eingestellt. Nur bei längeren Aufnahmen und hoher Sicherheit wird automatisch gewechselt.</p>
+              </div>
+              <div id="stt-filter-options">
+        <label><input id="stt_speech_guard" type="checkbox"/> Sprachsignal-Filter (lokal, Balanced/Quality)</label>
+        <label><input id="stt_auto_endpoint" type="checkbox"/> Aufnahme nach Sprechpause beenden (lokal, Balanced/Quality)</label>
+        <p class="hint">Optionale CPU-Energie-/Signalmusterfilter; keine kontinuierliche Mikrofonaufnahme. Leise Stimmen können abgewiesen werden. Kein neuronales Hands-free-VAD.</p>
+              </div>
+        <label><input id="stt_review" type="checkbox"/> Lokales Transkript vor dem Senden prüfen</label>
+        <button id="stt-clear-corrections">Persönliche STT-Korrekturen löschen</button>
+        <p class="hint">Gemerkte exakte Textpaare werden nur als Vorschlag angezeigt. Keine automatische Textänderung.</p>
+            </details>
+            </div>
+          </section>
+          <section class="settings-page" id="settings-tts" data-settings-page="tts" hidden>
+            <h2>Stimme &amp; Sprachausgabe</h2>
+        <label>Sprachausgabe <select id="tts"><option value="cartesia">Cartesia (Cloud)</option><option value="piper" disabled>Piper · Modellgewichte entfernt</option><option value="local">Qwen3-TTS · eigene Stimme (lokal)</option><option value="none">Ohne Sprachausgabe</option></select></label>
+        <label><input id="speak" type="checkbox" checked/> Antworten vorlesen</label>
+        <div id="cartesia-settings">
+          <label>Cartesia Voice-ID <input id="cartesia-voice-id" type="password" autocomplete="off" maxlength="160" placeholder="Eigene Voice-ID einfügen"/></label>
+          <button id="cartesia-voice-save">Cloud-Stimme speichern</button>
+          <button id="cartesia-voice-reset">Eigene ID zurücksetzen</button>
+          <p id="cartesia-voice-status" class="hint" role="status"></p>
+          <p class="hint">Nur lokal gespeichert. API-Key aus Windows-Umgebung. Anbieterwechsel und Voice-ID gelten ohne Neustart; die nächste Antwort verwendet die neue Stimme.</p>
+        </div>
+            <div id="qwen-settings">
+        <label>Qwen-Stimme / Modellvariante (nach Neustart)
+          <select id="qwen_variant"><option value="base">Original Qwen Base</option><option value="cf050">Qwen 1.7B + CF-LoRA 50% (Experiment)</option></select>
+        </label>
+        <p class="hint">CF50 benötigt den separat geprüften lokalen Adapter; kein Download und keine Modellinitialisierung beim Auswählen.</p>
+        <div class="panel-head">Eigene Stimme <span class="subtitle">Qwen3-TTS</span></div>
+        <button id="voice-import" title="Lokale WAV-Stimmreferenz für späteres Qwen-Voice-Cloning auswählen">Eigene Stimmprobe (WAV) importieren / klonen</button>
+        <p class="hint">Nur eigene Stimmen oder Stimmen mit ausdrücklicher Erlaubnis. Mono PCM16 WAV, 3–30 Sekunden. Die Auswahl startet keine Generierung; beim nächsten Start ist die Stimme aktiv. Keine Datei wird veröffentlicht.</p>
+            </div>
+        <label class="piper-voice" id="piper-de-group" hidden>Deutsche Piper-Stimme <select id="piper_voice_de"><option value="de_DE-ramona-low">Ramona · weiblich</option><option value="de_DE-eva_k-x_low">Eva K · weiblich</option></select></label>
+        <label class="piper-voice" id="piper-ru-group" hidden>Russische Piper-Stimme <select id="piper_voice_ru"><option value="ru_RU-irina-medium">Irina · weiblich</option></select></label>
+            <details class="settings-group" >
+              <summary>Ansagen und eigene Texte</summary>
+        <button id="prepare-audio" title="Drei feste Ansagen mit dem ausgewählten TTS-Anbieter speichern. Bei Cartesia kann dies API-Kosten auslösen.">Begrüßung, Vorstellung und Timer als Audio vorbereiten</button>
+        <div class="panel-head">Individuelle Texte <span class="subtitle">Leer = Standardtext</span></div>
+        <label>Begrüßung Deutsch <textarea id="hello_de" rows="2" maxlength="1500"></textarea></label>
+        <label>Begrüßung Русский <textarea id="hello_ru" rows="2" maxlength="1500"></textarea></label>
+        <label>Vorstellung Deutsch <textarea id="introduce_de" rows="3" maxlength="1500"></textarea></label>
+        <label>Представление Русский <textarea id="introduce_ru" rows="3" maxlength="1500"></textarea></label>
+        <label>Timer Deutsch <textarea id="timer_end_de" rows="1" maxlength="1500"></textarea></label>
+        <label>Таймер Русский <textarea id="timer_end_ru" rows="1" maxlength="1500"></textarea></label>
+        <button id="save-phrases">Alle Textvorlagen speichern</button>
+            </details>
+          </section>
+          <section class="settings-page" id="settings-models" data-settings-page="models" hidden>
+            <h2>Lokale Modelle</h2>
+        <p class="hint">Wähle das Antwortmodell unter Allgemein. Hier werden nur die lokalen Dateien eingerichtet.</p>
+        <div class="model-setup"><h3>Gemma 4 E2B</h3><p class="hint">Klein und schnell</p>
+          <div class="model-file-row"><span>Modelldatei</span><span id="standard-model-status" class="hint"></span><button id="llm-import-gguf">Wählen</button></div>
+          <div class="model-file-row"><span>Startprogramm</span><span id="standard-runtime-status" class="hint"></span><button id="llm-import-server">Wählen</button></div>
+        </div>
+        <div class="model-setup"><h3>Gemma 4 12B</h3><p class="hint">Größeres Modell</p>
+          <div class="model-file-row"><span>Modelldatei</span><span id="large-model-status" class="hint"></span><button id="llm-import-gemma12">Wählen</button></div>
+          <div class="model-file-row"><span>Startprogramm</span><span id="large-runtime-status" class="hint"></span><button id="llm-import-gemma12-server">Wählen</button></div>
+        </div>
+        <p class="hint">Dateiänderungen und Wechsel zwischen lokalen Modellen gelten nach Neustart. Kein Modellstart durch Auswahl.</p>
+        <details id="model-catalog">
+          <summary>Lokaler Modellkatalog</summary>
+          <p class="hint">Referenzmodelle und Alternativen. Dateigrößen ohne Laufzeiten. Download noch gesperrt.</p>
+          <button id="read-model-catalog">Modelle anzeigen</button>
+          <div id="model-catalog-list" class="hint" aria-live="polite"></div>
+        </details>
+          </section>
+          <section class="settings-page" id="settings-avatar" data-settings-page="avatar" hidden>
+            <h2>Avatar &amp; Animation</h2>
+        <div class="panel-head">3D-Avatar <span class="subtitle">Deine Avatare</span></div>
+        <button id="avatar-import" title="VRM in die private Mini-Bibliothek übernehmen">Avatar importieren</button>
+        <button id="vroid-hub" title="VRoid Hub im Standardbrowser öffnen">VRoid Hub öffnen</button>
+        <label>Avatar auswählen <select id="avatar-gallery"><option value="">Modell auswählen…</option></select></label>
+        <label><input id="mouse_tracking" type="checkbox" checked/> Maus mit Blick und Kopf verfolgen</label>
+        <label><input id="avatar-show-all" type="checkbox"/> Alle importierten Avatare anzeigen</label>
+        <button id="avatar-favorite-toggle" disabled title="Nur einen bewusst geprüften VRM in die Mini-Demoliste übernehmen">Zu Favoriten hinzufügen</button>
+        <p id="avatar-collection-hint" class="hint" aria-live="polite">Favoriten werden zuerst angezeigt.</p>
+            <details class="settings-group" id="animation-settings">
+              <summary>Animationen bearbeiten</summary>
+        <div class="panel-head">Animationen <span class="subtitle">Datei wählen / Vorschau</span></div>
+        <button id="animation-save-defaults" title="Die für den aktiven Avatar gespeicherten VRMA nur im privaten Mini-Profil übernehmen">Als Mini-Standard speichern</button>
+        <p class="hint">Animationen bleiben privat.</p>
+        <div id="animation-list"></div>
+        <p id="avatar-animation-summary" class="hint" aria-live="polite">Mit ✓ speichern. Andere Avatare bleiben unverändert.</p>
+            </details>
+          </section>
+          <section class="settings-page" id="settings-diagnose" data-settings-page="diagnose" hidden>
+            <h2>Diagnose</h2>
+            <p class="hint">Prüft nur Dateien und Konfiguration, startet keine Modelle.</p>
+            <button id="runtime-diagnose">Installation statisch prüfen</button>
+            <div id="runtime-report" class="hint" role="status" aria-live="polite"></div>
+            <h3>Spracherkennung</h3>
+            <div id="mic-level" class="hint" aria-live="off" hidden></div>
+            <div id="live-transcript" class="hint" aria-live="polite" hidden></div>
+            <div id="stt-diagnostics" class="hint" aria-live="polite" hidden></div>
+          </section>
+          <section class="settings-page" id="settings-advanced" data-settings-page="advanced" hidden>
+            <h2>Erweitert</h2>
+        <p class="hint">Lokale Modelle werden über Start am Avatar geladen.</p>
+        <details id="runtime-settings">
+          <summary>Lokale Worker und Laufzeitpfade</summary>
+          <p class="hint">Mini-Pfad hat Vorrang vor der Umgebungsvariable. Änderungen werden erst nach Neustart aktiv; kein Modellstart.</p>
+          <div id="runtime-path-list"></div>
+        </details>
+          </section>
+        </div>
+      </section>
+      <div id="stt-review-panel" class="panel dock-panel" hidden>
+        <div class="panel-head">Transkript prüfen</div>
+        <p id="stt-review-original" class="hint"></p>
+        <textarea id="stt-review-text" rows="3" maxlength="4000" aria-label="Transkript bearbeiten"></textarea>
+        <button id="stt-review-send">Senden</button>
+        <button id="stt-review-remember">Senden und Korrektur merken</button>
+        <button id="stt-review-cancel">Verwerfen</button>
+        <p class="hint">Nur beim Merken wird das Textpaar lokal gespeichert. Kein Audio, kein Training.</p>
+      </div>
+      </aside>
+    </main>
+    <div class="bottom">
+      <div id="feedback" class="feedback">
+      <div id="bubble" class="bubble" hidden></div>
+      <button id="dismiss-feedback" title="Meldung schließen" aria-label="Meldung schließen" hidden>&times;</button>
+      </div>
+      <div id="animation-preview-actions" hidden>
+        <button id="preview-save" disabled title="Die geprüfte Animation dauerhaft für diesen Avatar speichern">✓ Für diesen Avatar speichern</button>
+        <button id="preview-back" title="Zu den Einstellungen zurückkehren; ohne Speichern bleibt die Vorschau ungespeichert">Zurück zu Einstellungen</button>
+      </div>
+      <div class="toolbar" id="toolbar">
+        <button id="chat-toggle" title="Textchat" aria-label="Textchat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H5l2-4a7.5 7.5 0 1 1 13-3.5Z"/></svg><span>Chat</span></button>
+        <button id="record" class="primary" title="Aufnahme starten" aria-label="Aufnahme starten"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8 21h8"/></svg></button>
+        <button id="warm-stack" title="Lokale Modelle starten" aria-label="Lokale Modelle starten"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 10-12h-7z"/></svg><span id="warm-stack-label">Start</span></button>
+        <button id="settings-toggle" title="Einstellungen" aria-label="Einstellungen"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"/><circle cx="12" cy="12" r="8"/></svg><span>Einstellungen</span></button>
+        <button id="toolbar-more" title="Bedienung einblenden" aria-label="Bedienung einblenden" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.5"/><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/></svg></button>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

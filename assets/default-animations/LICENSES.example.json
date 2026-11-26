@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "files": [
+    {
+      "name": "welcome.vrma",
+      "license": "",
+      "author": "",
+      "source_url": "",
+      "sha256": "",
+      "redistribution_allowed": false
+    },
+    {
+      "name": "idle.vrma",
+      "license": "",
+      "author": "",
+      "source_url": "",
+      "sha256": "",
+      "redistribution_allowed": false
+    },
+    {
+      "name": "listening.vrma",
+      "license": "",
+      "author": "",
+      "source_url": "",
+      "sha256": "",
+      "redistribution_allowed": false
+    },
+    {
+      "name": "talking.vrma",
+      "license": "",
+      "author": "",
+      "source_url": "",
+      "sha256": "",
+      "redistribution_allowed": false
+    },
+    {
+      "name": "explaining.vrma",
+      "license": "",
+      "author": "",
+      "source_url": "",
+      "sha256": "",
+      "redistribution_allowed": false
+    },
+    {
+      "name": "happy.vrma",
+      "license": "",
+      "author": "",
+      "source_url": "",
+      "sha256": "",
+      "redistribution_allowed": false
+    },
+    {
+      "name": "laugh.vrma",
+      "license": "",
+      "author": "",
+      "source_url": "",
+      "sha256": "",
+      "redistribution_allowed": false
+    },
+    {
+      "name": "nod.vrma",
+      "license": "",
+      "author": "",
+      "source_url": "",
+      "sha256": "",
+      "redistribution_allowed": false
+    },
+    {
+      "name": "surprised.vrma",
+      "license": "",
+      "author": "",
+      "source_url": "",
+      "sha256": "",
+      "redistribution_allowed": false
+    }
+  ]
+}

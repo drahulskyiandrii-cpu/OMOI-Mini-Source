@@ -1,0 +1,13 @@
+{
+  "name": "omoi-mini-local-whisper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=21"},
+  "dependencies": {"openvino-genai-node": "2026.4.0"},
+  "allowScripts": {
+    "openvino-genai-node@2026.4.0": true,
+    "openvino-node@2026.4.0": true
+  },
+  "scripts": {"start": "node worker.mjs"}
+}

@@ -1,0 +1,221 @@
+{
+  "schema": 1,
+  "files": [
+    {
+      "name": "idle.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/idle.vrma",
+      "sha256": "9563c582418bd5b51da473ea85b41722cb5304f84128935c3b570c72316c444a",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "idle_alt1.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/idle-2.vrma",
+      "sha256": "7985c8621c2fb965b7d6f5236efa885cfa7fa92995d544f470dc0028864efa13",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "idle_alt2.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/idle-3.vrma",
+      "sha256": "53fef1f07988adceb758ec2a9dc92ee29410698da8e1a0a49d156a662756800e",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "listening.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/idle-4.vrma",
+      "sha256": "5d25dcdaf841c879d056f299b1dc28515da11ddf95e3d26ea24ef5419281a2da",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "listening_alt1.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/idle-7.vrma",
+      "sha256": "a4185076435c7797d169a8e2bd8206696805c46d91d8194ecbe589cd6be24d34",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "talking.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/idle-talking.vrma",
+      "sha256": "74f50c1b63bb8c2b19276dd7db26c9e8096da72acb521d4e635b059730e78bd8",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "talking_alt1.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/idle-talking-4.vrma",
+      "sha256": "36be8475c4eba974ea6da2268903cd9461536e24a7cbb98f457acc62a4098f12",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "explaining.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/idle-talking-5.vrma",
+      "sha256": "911f108951fba12ea151649b7749e2cee00ab7f9384ddde8a750c441886d0b91",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "talk_gentle.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/idle-talking-6.vrma",
+      "sha256": "1648d8a03d7e563cad203fa88b80cfd7629e70292cbcc406bc730ac1ffc8bf60",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "talk_enthusiastic.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/idle-talking-7.vrma",
+      "sha256": "b5d9605ebb566fb811b52e81fa826ad3b47601d349994540c65a33a001ed1aac",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "welcome.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/nod-2.vrma",
+      "sha256": "f63bf415512e740375c47306c4c0b9d921fcab64f45c80be994fe7d17dc9f4a0",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "happy.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/happy-6.vrma",
+      "sha256": "fbe186a11ce3cdb2e0dec7cdf53930f6571c68a574a5adf073f9cf021284fcf8",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "happy_alt1.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/happy-2.vrma",
+      "sha256": "7bc4b0a91cd1feb0afee4600d5f8d800ba3bc64c07b96ca0faf637ed6da6f9e1",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "happy_alt2.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/happy.vrma",
+      "sha256": "55b69cf6ed4213adeba1279cb85015c136cbaa5ecefc5211f4f595fc454d6b39",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "nod.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/nod.vrma",
+      "sha256": "c5f715092eacacc827b52c984ebd5c8b8d991b2e34102fbc03235b01c6bcbbe8",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "nod_alt1.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/nod-3.vrma",
+      "sha256": "6a0b24b783b8436f61dc66d87aaecff96b8b9226b58a20d051c4a660129a8d84",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "nod_alt2.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/nod-4.vrma",
+      "sha256": "6e00b091e2c26c7f860f194d9931c2538ce73a5d73579aaebfdf4a06ace49bb3",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "thinking.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/think.vrma",
+      "sha256": "e28485c2606b4b27869dee84d0a4be7cff9d6eb1a573cf1ea33b3d5a4b5aa3f9",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "thinking_alt1.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/think-2.vrma",
+      "sha256": "2b7d7e4cd922d9a9cdd8347b4921e57fbcccd423c315765e97c8866505c657f2",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "idle_shift.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/relaxed-2.vrma",
+      "sha256": "e1427084fb837451d2f096845177c0af1614809bceb873c1b113b748f094b1b1",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "idle_shift_alt1.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/relaxed.vrma",
+      "sha256": "5e3849bc677f63fb5952583c39102ffdf1adb08b32baa3e4b9de54630a3bb3b9",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "idle_shift_alt2.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/relaxed-3.vrma",
+      "sha256": "dcee96eeb16fd4a204488a7f5c20871ac4ddc5c82aec3bd47d462bda32668b0f",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "sad.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/sad.vrma",
+      "sha256": "7d011478fbff385bdde6ea0314a4035740571c5fdfb9902c8799fdb8ce189626",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "excited.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/happy-3.vrma",
+      "sha256": "8f64bb3a91a7a98127eef3820e2e284cfc2d2eb54dd336823f83fd4ef3d07412",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "shy.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/neutral.vrma",
+      "sha256": "91642c3593383d6b8e3d7ae2e5e408abac89a2baa31d2c1a3b625a46b0ab92b6",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "annoyed.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/angry-2.vrma",
+      "sha256": "1e8fb16b889c9054cc44023df63932ff119a87ddab8c5e0f05378a66318b5869",
+      "redistribution_allowed": true
+    },
+    {
+      "name": "shake_head.vrma",
+      "license": "Apache-2.0",
+      "author": "High Fidelity, Vircadia, Overte; VRMA conversion: Hanami (Undi95)",
+      "source_url": "https://github.com/Undi95/Hanami/blob/5cf4afaac1ad8499d0890101a7c93762bf1dc8b0/vrma/shake.vrma",
+      "sha256": "99b6349e0df9eec08c50eb2285935114692bb0d9b0e78dd9f754a6f7e5fdce23",
+      "redistribution_allowed": true
+    }
+  ]
+}
