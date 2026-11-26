@@ -73,7 +73,7 @@ APPROVED_ANIMATIONS = {
 EXACT=frozenset({
     "README.md","AGENTS.md",".gitignore",".env.example","start.bat",
     "requirements.txt","requirements-lock.txt","requirements-build.txt","requirements-runtime-lock.txt","scripts/install_runtime.ps1","START-INSTALLED.bat",
-    "docs/INSTALLATION.md","docs/DISTRIBUTION.md","docs/SCHOOL_ARCHITECTURE.md","docs/LICENSES.md","docs/INSTALLER.md","LICENSE","installer/OMOI-Mini.iss","installer/OMOI-Mini-Source.iss","scripts/build_source_installer.ps1",
+    "docs/INSTALLATION.md","docs/DISTRIBUTION.md","docs/ARCHITECTURE.md","docs/LICENSES.md","docs/INSTALLER.md","LICENSE","installer/OMOI-Mini.iss","installer/OMOI-Mini-Source.iss","scripts/build_source_installer.ps1",
     "assets/default-animations/README.md","assets/default-animations/LICENSES.example.json",
     "assets/default-animations/LICENSES.json","assets/default-animations/NOTICE.md","assets/default-animations/LICENSE-Apache-2.0.txt","assets/default-avatar/README.md",AVATAR,
     "web/default_animations.test.mjs",

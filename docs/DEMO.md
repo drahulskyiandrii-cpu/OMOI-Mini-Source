@@ -17,14 +17,14 @@ Nach der Installation gemaess [README](../README.md) kann ein eigenes
 Demo-Profil verwendet werden (PowerShell im Quellordner):
 
 ```powershell
-$env:OMOI_MINI_DATA_DIR = Join-Path $env:LOCALAPPDATA "OMOI-Mini-School-Demo"
+$env:OMOI_MINI_DATA_DIR = Join-Path $env:LOCALAPPDATA "OMOI-Mini-Demo"
 .\start.bat
 ```
 
 Unter Einstellungen Sprachausgabe deaktivieren (TTS: Ohne Sprachausgabe).
 Kein Mikrofon, Modellstart oder API-Schluessel notwendig. Im Textchat:
 
-- Notiere bitte Schulprojekt OMOI Mini
+- Notiere bitte OMOI Mini Test
 - Was habe ich mir notiert?
 - Timer auf 30 Sekunden
 - Stoppe den Timer

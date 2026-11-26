@@ -15,4 +15,4 @@ Die Python-Anwendung befindet sich in `python/omoi_mini/`, die Weboberfläche in
 - Zugangsdaten, private Ressourcen, Modellgewichte, lokale Laufzeitumgebungen und Build-Artefakte gehören nicht in Git.
 - Neue Abhängigkeiten und Ressourcen auf Lizenzbedingungen prüfen.
 
-Siehe [Architektur](docs/SCHOOL_ARCHITECTURE.md), [Installation](docs/INSTALLATION.md) und [Lizenzen](docs/LICENSES.md).
+Siehe [Architektur](docs/ARCHITECTURE.md), [Installation](docs/INSTALLATION.md) und [Lizenzen](docs/LICENSES.md).

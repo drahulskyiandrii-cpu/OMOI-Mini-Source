@@ -1,7 +1,6 @@
 # OMOI Mini
 
 OMOI Mini ist ein Desktop-Sprachassistent für Windows mit animierter 3D-Figur.
-Das Projekt entstand im Rahmen einer Umschulung zum Fachinformatiker für Systemintegration.
 
 ## Funktionen
 
@@ -34,7 +33,7 @@ Bei Texteingabe entfällt die Spracherkennung. Qt WebChannel verbindet die Pytho
 
 ## Installation und Start
 
-Voraussetzungen: Windows 11 x64, Python 3.11 x64 und Node.js 24.
+Voraussetzungen: Windows 11 x64, Python 3.11 x64 mit Python Launcher und Node.js 24. Vor der Installation mit `py -3.11 --version` und `node --version` pruefen.
 Für den Client werden 16 GB RAM empfohlen; lokale Modelle benötigen gegebenenfalls mehr Speicher.
 
 PowerShell im Quellordner:
@@ -42,8 +41,8 @@ PowerShell im Quellordner:
 ```powershell
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
-npm ci --prefix web
-npm run build --prefix web
+npm.cmd ci --prefix web
+npm.cmd run build --prefix web
 .\start.bat
 ```
 
@@ -52,7 +51,7 @@ Zugangsdaten ausschließlich als Umgebungsvariablen konfigurieren. Lokale Modell
 ## Dokumentation
 
 - [Demonstration](docs/DEMO.md)
-- [Architektur](docs/SCHOOL_ARCHITECTURE.md)
+- [Architektur](docs/ARCHITECTURE.md)
 - [Installation und Windows-Paket](docs/INSTALLATION.md)
 - [Windows-Installer](docs/INSTALLER.md)
 - [Standardavatar](assets/default-avatar/README.md)
@@ -74,6 +73,6 @@ Installation und Start aus einer neu eingerichteten Python- und Node-Umgebung so
 
 ## Projektstatus und Lizenz
 
-Windows-Prototyp für Lern- und Demonstrationszwecke. Die Hardwareprüfung der aktuellen lokalen STT-/LLM-/TTS-Kette und die Einrichtung externer Modelllaufzeiten auf einem neuen Zielsystem stehen noch aus.
+Windows-Prototyp. Die Hardwareprüfung der aktuellen lokalen STT-/LLM-/TTS-Kette und die Einrichtung externer Modelllaufzeiten auf einem neuen Zielsystem stehen noch aus.
 
 Der eigene Quellcode steht unter der [MIT-Lizenz](LICENSE). Drittanbieter und Ressourcen behalten ihre jeweiligen Lizenzen. Modellgewichte, persönliche Sprachreferenzen, Zugangsdaten und Benutzerdaten sind nicht enthalten. Die öffentliche Weitergabe des gebündelten Windows-Clients setzt die vollständige Erfüllung der Drittanbieter-Lizenzbedingungen voraus.

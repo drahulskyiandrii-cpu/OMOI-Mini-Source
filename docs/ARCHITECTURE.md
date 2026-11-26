@@ -1,4 +1,4 @@
-# OMOI Mini - Architektur fuer die Schulvorstellung
+# OMOI Mini - Systemarchitektur
 
 Das Programm verbindet eine kleine 3D-Figur mit einem Sprachassistenten.
 Python steuert die Anwendung, JavaScript stellt die Figur dar.
